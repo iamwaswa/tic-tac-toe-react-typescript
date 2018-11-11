@@ -1,0 +1,77 @@
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js"
+    ]
+  },
+  "rules": {
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "no-default-export": false,
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "private-static-field",
+          "protected-static-field",
+          "public-static-field",
+          "private-instance-field",
+          "protected-instance-field",
+          "public-instance-field",
+          "private-static-method",
+          "protected-static-method",
+          "public-static-method",
+          "private-constructor",
+          "protected-constructor",
+          "public-constructor",
+          "private-instance-method",
+          "protected-instance-method",
+          "public-instance-method"
+        ]
+      }
+    ],
+    "trailing-comma": [
+      true, 
+      {
+      "multiline": {
+        "objects": "always",
+        "arrays": "always",
+        "functions": "never",
+        "typeLiterals": "always"
+      },
+      "singleline": "never",
+      "esSpecCompliant": true
+      }
+    ],
+    "typedef": [
+      true,
+      "call-signature", 
+      "arrow-call-signature",
+      "parameter", 
+      "arrow-parameter",
+      "property-declaration",
+      "member-variable-declaration"
+    ],
+    "indent": [
+      true,
+      "spaces",
+      2
+    ],
+    "space-within-parens": true,
+    "curly": true,
+    "whitespace": [
+      true, 
+      "check-decl",
+      "check-operator", 
+      "check-module",
+      "check-separator",
+      "check-rest-spread",
+      "check-type",
+      "check-type-operator",
+      "check-preblock"
+    ]
+  }
+}
