@@ -1,10 +1,10 @@
-import * as React from "react";
-import { Component } from "react";
 import styles from "src/styles";
 import Board from "./Board";
 import Square from "./Square";
 import updateTurn, { Turn } from "src/UpdateGame/UpdateGameTurn";
 import updateGameStatus, { GameStatus, setupGame } from "src/UpdateGame/UpdateGameStatus";
+import * as React from "react";
+import { Component } from "react";
 
 export interface IGameState {
     board: string[];
@@ -25,10 +25,11 @@ class Game extends Component<{}, IGameState> {
         const board = this.state.board.slice();
         const  { turn, gameStatus } = this.state;
 
-        if(gameStatus === GameStatus.X_WINS ||
+        if (gameStatus === GameStatus.X_WINS ||
             gameStatus === GameStatus.O_WINS ||
             gameStatus === GameStatus.GAME_OVER) {
-                return;
+
+            return;
         }
 
         if (turn === Turn.X) {
@@ -48,7 +49,6 @@ class Game extends Component<{}, IGameState> {
         return Array(this.state.board.length)
             .fill(undefined)
             .map((element: undefined, index: number) => {
-
                 const value = this.state.board[index];
                 const handleSquareOnClick = (): void => {
                     this.handleSquareOnClick(index);
@@ -69,6 +69,7 @@ class Game extends Component<{}, IGameState> {
     public render(): JSX.Element {
 
         const renderSquares = (): JSX.Element[] => {
+
             return this.renderSquares();
         }
 
@@ -78,11 +79,13 @@ class Game extends Component<{}, IGameState> {
                     {this.state.gameStatus}
                 </p>
                 <section style={styles.game}>
-                    <Board renderSquares={renderSquares}/>
+                    <Board 
+                        renderSquares={renderSquares}
+                    />
                     <button 
                         style={styles.restartButton}
                         onClick={this.handleRestartOnClick}>
-                        Restart
+                            Restart
                     </button>
                 </section>
             </section>

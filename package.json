@@ -1,11 +1,11 @@
 {
-  "name": "tic-tact-toe",
+  "name": "tic-tac-toe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
-    "react-scripts-ts": "3.1.0"
+    "react-scripts-ts": "^4.0.8"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -16,8 +16,14 @@
   "devDependencies": {
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.5",
-    "@types/react": "^16.7.2",
+    "@types/react": "^16.7.3",
     "@types/react-dom": "^16.0.9",
     "typescript": "^3.1.6"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

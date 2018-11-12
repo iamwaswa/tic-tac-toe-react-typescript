@@ -35,26 +35,30 @@ const updateGameStatus = (currentGameStatus: GameStatus, board: string[]): GameS
 
     let isGameOver = true;
     for (const square of board) {
-        if(square === ``) {
+        if (square === ``) {
             isGameOver = false;
         }
     }
 
-    if(isGameOver) {
+    if (isGameOver) {
+
         return GameStatus.GAME_OVER;
     }
 
     for (const winningState of possibleWinningStates) {
         const [ firstIndex ] = winningState;
         const gameIsWon = allIndicesHaveSameValue(board, winningState);
-        if(gameIsWon) {
+        if (gameIsWon) {
+
             return determineWhichPlayerWon(board, firstIndex);
         }
     }
 
-    if(currentGameStatus === GameStatus.CURRENT_PLAYER_X) {
+    if (currentGameStatus === GameStatus.CURRENT_PLAYER_X) {
+
         return GameStatus.CURRENT_PLAYER_O;
     } else {
+
         return GameStatus.CURRENT_PLAYER_X;
     }
 };
@@ -62,7 +66,8 @@ const updateGameStatus = (currentGameStatus: GameStatus, board: string[]): GameS
 const allIndicesHaveSameValue = (board: string[], winningState: number[]): boolean => {
     const [firstIndex, secondIndex, thirdIndex] = winningState;
 
-    if(board[firstIndex] === ``) {
+    if (board[firstIndex] === ``) {
+
         return false;
     }
 
@@ -71,9 +76,11 @@ const allIndicesHaveSameValue = (board: string[], winningState: number[]): boole
 }
 
 const determineWhichPlayerWon = (board: string[], firstIndex: number): GameStatus => {
-    if(board[firstIndex] === Turn.X) {
+    if (board[firstIndex] === Turn.X) {
+
         return GameStatus.X_WINS;
     } else {
+        
         return GameStatus.O_WINS;
     }
 }
