@@ -1,13 +1,13 @@
 import Square from "./Square";
 import HistoryButton from './HistoryButton';
-import updateTurn from "src/UpdateGame/UpdateGameTurn";
-import updateGameStatus, { setupGame } from "src/UpdateGame/UpdateGameState";
+import updateGameStatus, { setupGame } from "src/updateGame/UpdateGameState";
 import * as React from "react";
 import { Component } from "react";
 import Turn from "src/enums/Turn";
 import GameStatus from "src/enums/GameStatus";
 import IHistory from "src/interfaces/IHistory";
 import Display from "./Display";
+import updateTurn from "src/updateGame/UpdateGameTurn";
 
 export interface IGameState {
     history: IHistory;
@@ -75,7 +75,7 @@ class Game extends Component<{}, IGameState>{
         const { historyBoards } = this.state.history;
 
         return historyBoards
-                .map((board: string[], index: number) => {
+                .map((historyBoard: string[], index: number) => {
                     const handleHistoryButtonOnClick = (): void => {
                         this.handleHistoryButtonOnClick(index);
                     };
@@ -121,9 +121,9 @@ class Game extends Component<{}, IGameState>{
         const updatedHistoryBoards = historyBoards.slice(0, index + 1);
         const updatedTurns = turns.slice(0, index + 1);
         const updatedGameStatusvalues = gameStatusValues.slice(0, index + 1);
-        const updatedBoard = updatedHistoryBoards.pop();
-        const updatedTurn = updatedTurns.pop();
-        const updatedGameStatus = updatedGameStatusvalues.pop();
+        const updatedBoard = updatedHistoryBoards[index];
+        const updatedTurn = updatedTurns[index];
+        const updatedGameStatus = updatedGameStatusvalues[index];
         const updatedHistory = {
             historyBoards: updatedHistoryBoards,
             turns: updatedTurns,

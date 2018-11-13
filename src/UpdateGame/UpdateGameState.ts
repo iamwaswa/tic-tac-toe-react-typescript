@@ -24,10 +24,6 @@ const historyBoards: string[][] = [];
 const turns: Turn[] = [];
 const gameStatusValues: GameStatus[] = [];
 
-historyBoards.push(startBoard);
-turns.push(startTurn);
-gameStatusValues.push(startGameStatus);
-
 const startHistory = {
     historyBoards,
     turns,
