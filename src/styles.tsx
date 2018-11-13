@@ -31,12 +31,18 @@ const styles = {
     buttons: {
         display: `flex`,
         flexDirection: `column` as `column`,
-        justifyContent: `space-between`,
+        marginLeft: `1em`,
     },
     restartButton: {
-        marginLeft: `5px`,
-        border: `1px solid black`,
-        backgroundColor: `white`,
+        maxWidth: `55px`,
+        marginBottom: `1em`,
+    },
+    historyButtonList: {
+        display: `flex`,
+        flexDirection: `column` as `column`,
+    },
+    historyButton: {
+        marginBottom: `1em`,
     },
 };
 

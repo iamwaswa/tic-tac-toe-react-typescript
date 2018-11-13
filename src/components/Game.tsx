@@ -1,7 +1,4 @@
-import styles from "src/styles";
-import Board from "./Board";
 import Square from "./Square";
-import RestartButton from "./RestartButton";
 import HistoryButton from './HistoryButton';
 import updateTurn from "src/UpdateGame/UpdateGameTurn";
 import updateGameStatus, { setupGame } from "src/UpdateGame/UpdateGameState";
@@ -10,7 +7,7 @@ import { Component } from "react";
 import Turn from "src/enums/Turn";
 import GameStatus from "src/enums/GameStatus";
 import IHistory from "src/interfaces/IHistory";
-import HistoryButtonList from "./HistoryButtonList";
+import Display from "./Display";
 
 export interface IGameState {
     history: IHistory;
@@ -79,11 +76,15 @@ class Game extends Component<{}, IGameState>{
 
         return historyBoards
                 .map((board: string[], index: number) => {
+                    const handleHistoryButtonOnClick = (): void => {
+                        this.handleHistoryButtonOnClick(index);
+                    };
 
                     return (
                         <HistoryButton 
-                            key={ index } 
-                            onClick={ this.handleHistoryButtonOnClick(index) }
+                            key = { index }
+                            position = { index }
+                            onClick={ handleHistoryButtonOnClick }
                         />
                     );
                 });
@@ -142,24 +143,12 @@ class Game extends Component<{}, IGameState>{
     public render (): JSX.Element {
 
         return (
-            <section>
-                <p style={ styles.gameStatus }>
-                    { this.state.gameStatus }
-                </p>
-                <section style={ styles.game }>
-                    <Board
-                        renderSquares = { this.renderSquares }
-                    />
-                    <section style={ styles.buttons }>
-                        <RestartButton 
-                            onClick = { this.handleRestartOnClick } 
-                        />
-                        <HistoryButtonList 
-                            renderHistoryButtons = { this.renderHistoryButtons }
-                        />
-                    </section>
-                </section>
-            </section>
+            <Display 
+                message = { this.state. gameStatus }
+                renderSquares = { this.renderSquares }
+                onRestartClick = { this.handleRestartOnClick }
+                renderHistoryButtons = { this.renderHistoryButtons }
+            />
         );
     }
 }

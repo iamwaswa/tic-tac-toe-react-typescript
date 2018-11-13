@@ -11,7 +11,10 @@ const Square: FunctionComponent<ISquareProps> = (
     (props: ISquareProps): JSX.Element => {  
         
         return ( 
-            <section style={styles.square} onClick={props.onClick}>
+            <section 
+                style = { styles.square } 
+                onClick = { props.onClick }
+            >
                 {props.value}
             </section>
         );

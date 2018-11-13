@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react';
 import * as React from "react";
+import styles from "src/styles";
 
 interface IHistoryButtonListProps {
     renderHistoryButtons: () => JSX.Element[];
@@ -8,7 +9,9 @@ interface IHistoryButtonListProps {
 const HistoryButtonList: FunctionComponent<IHistoryButtonListProps> = (
         (props: IHistoryButtonListProps): JSX.Element => {
             return (  
-                <section>
+                <section 
+                    style = { styles.historyButtonList }
+                >
                     {
                         props.renderHistoryButtons()
                     }

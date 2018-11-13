@@ -10,8 +10,8 @@ const IRestartButton: FunctionComponent<IRestartButtonProps> =
     (props: IRestartButtonProps): JSX.Element => {
         return (  
             <button
-                style={ styles.restartButton }
-                onClick={ props.onClick }>
+                style = { styles.restartButton }
+                onClick = { props.onClick }>
                     Restart
             </button>
         );

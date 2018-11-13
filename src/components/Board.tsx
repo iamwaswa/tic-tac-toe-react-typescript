@@ -10,7 +10,9 @@ const Board: FunctionComponent<IBoardProps> = (
     (props: IBoardProps): JSX.Element => {
         
         return ( 
-            <section style={styles.board}>
+            <section 
+                style = { styles.board }
+            >
                 {
                     props.renderSquares()
                 }
