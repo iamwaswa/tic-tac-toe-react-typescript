@@ -92,6 +92,11 @@
         "variable-declaration": "onespace"
       }
     ],
-    "newline-before-return": true
+    "newline-before-return": true,
+    "interface-name": [
+      true, 
+      "always-prefix"
+    ],
+    "semicolon": [true, "always"]
   }
 }

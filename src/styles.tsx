@@ -28,6 +28,11 @@ const styles = {
         width: `30px`,
         height: `30px`,
     },
+    buttons: {
+        display: `flex`,
+        flexDirection: `column` as `column`,
+        justifyContent: `space-between`,
+    },
     restartButton: {
         marginLeft: `5px`,
         border: `1px solid black`,

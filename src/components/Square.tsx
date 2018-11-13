@@ -7,7 +7,7 @@ interface ISquareProps {
     onClick: () => void;
 }
 
-const Square: FunctionComponent<ISquareProps> = 
+const Square: FunctionComponent<ISquareProps> = (
     (props: ISquareProps): JSX.Element => {  
         
         return ( 
@@ -16,5 +16,6 @@ const Square: FunctionComponent<ISquareProps> =
             </section>
         );
     }
+);
 
 export default Square;

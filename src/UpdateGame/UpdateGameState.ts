@@ -1,13 +1,6 @@
-import { Turn } from "./UpdateGameTurn";
 import { IGameState } from "src/components/Game";
-
-export enum GameStatus {
-    CURRENT_PLAYER_X = "Next Player: X",
-    CURRENT_PLAYER_O = "Next Player: O",
-    X_WINS = "X has won!",
-    O_WINS = "O has won!",
-    GAME_OVER = "Game Over :(",
-}
+import Turn from "src/enums/Turn";
+import GameStatus from "src/enums/GameStatus";
 
 const possibleWinningStates = [
     // Rows
@@ -23,13 +16,33 @@ const possibleWinningStates = [
     [2, 4, 6],
 ];
 
+const startBoard = Array(9).fill(``);
+const startTurn = Turn.X;
+const startGameStatus = GameStatus.CURRENT_PLAYER_X;
+
+const historyBoards: string[][] = [];
+const turns: Turn[] = [];
+const gameStatusValues: GameStatus[] = [];
+
+historyBoards.push(startBoard);
+turns.push(startTurn);
+gameStatusValues.push(startGameStatus);
+
+const startHistory = {
+    historyBoards,
+    turns,
+    gameStatusValues,
+};
+
 export const setupGame = (): IGameState => {
+
     return {
-        board: Array(9).fill(``),
-        turn: Turn.X,
-        gameStatus: GameStatus.CURRENT_PLAYER_X,
+        history: startHistory,
+        board: startBoard,
+        turn: startTurn,
+        gameStatus: startGameStatus,
     };
-}
+};
 
 const updateGameStatus = (currentGameStatus: GameStatus, board: string[]): GameStatus => {
 
@@ -41,7 +54,6 @@ const updateGameStatus = (currentGameStatus: GameStatus, board: string[]): GameS
     }
 
     if (isGameOver) {
-
         return GameStatus.GAME_OVER;
     }
 
@@ -49,16 +61,13 @@ const updateGameStatus = (currentGameStatus: GameStatus, board: string[]): GameS
         const [ firstIndex ] = winningState;
         const gameIsWon = allIndicesHaveSameValue(board, winningState);
         if (gameIsWon) {
-
             return determineWhichPlayerWon(board, firstIndex);
         }
     }
 
     if (currentGameStatus === GameStatus.CURRENT_PLAYER_X) {
-
         return GameStatus.CURRENT_PLAYER_O;
     } else {
-
         return GameStatus.CURRENT_PLAYER_X;
     }
 };
@@ -67,22 +76,19 @@ const allIndicesHaveSameValue = (board: string[], winningState: number[]): boole
     const [firstIndex, secondIndex, thirdIndex] = winningState;
 
     if (board[firstIndex] === ``) {
-
         return false;
     }
 
     return board[firstIndex] === board[secondIndex] &&
             board[secondIndex] === board[thirdIndex];
-}
+};
 
 const determineWhichPlayerWon = (board: string[], firstIndex: number): GameStatus => {
     if (board[firstIndex] === Turn.X) {
-
         return GameStatus.X_WINS;
-    } else {
-        
+    } else {   
         return GameStatus.O_WINS;
     }
-}
+};
 
 export default updateGameStatus;

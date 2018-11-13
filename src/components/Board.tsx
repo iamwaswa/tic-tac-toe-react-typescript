@@ -6,14 +6,17 @@ interface IBoardProps {
     renderSquares: () => JSX.Element[];
 }
 
-const Board: FunctionComponent<IBoardProps> = 
+const Board: FunctionComponent<IBoardProps> = (
     (props: IBoardProps): JSX.Element => {
         
         return ( 
             <section style={styles.board}>
-                {props.renderSquares()}
+                {
+                    props.renderSquares()
+                }
             </section>
         );
     }
+);
 
 export default Board;
