@@ -6,8 +6,8 @@ import GameStatus from "src/enums/GameStatus";
 import IHistory from "src/interfaces/IHistory";
 import Display from "./Display";
 import squareClickHandler from "src/ClickHandlers/SquareClickHandler";
-import historyBtnClickHandler from '../ClickHandlers/HistoryClickHandler';
-import restartBtnClickHandler from "src/ClickHandlers/RestartClickHandler";
+import historyBtnClickHandler from '../ClickHandlers/HistoryBtnClickHandler';
+import restartBtnClickHandler from "src/ClickHandlers/RestartBtnClickHandler";
 import renderHistoryBtnList from "src/Renderers/HistoryBtnListRenderer";
 import renderSquares from "src/Renderers/SquareRenderer";
 
