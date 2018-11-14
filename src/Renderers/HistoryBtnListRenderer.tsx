@@ -13,9 +13,9 @@ const renderHistoryBtnList = (game: Game): JSX.Element[] => {
 
             return (
                 <HistoryButton
-                    key={ index }
-                    position={ index }
-                    onClick={ handleHistoryButtonOnClick }
+                    key = { index }
+                    position = { index }
+                    onClick = { handleHistoryButtonOnClick }
                 />
             );
         });

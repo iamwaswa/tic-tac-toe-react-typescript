@@ -13,9 +13,9 @@ const renderSquares = (game: Game): JSX.Element[] => {
 
             return (
                 <Square
-                    key={ index }
-                    value={ value }
-                    onClick={ handleSquareOnClick }
+                    key = { index }
+                    value = { value }
+                    onClick = { handleSquareOnClick }
                 />
             );
         });
