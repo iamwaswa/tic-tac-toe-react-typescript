@@ -1,11 +1,12 @@
-import Game from "src/components/Game";
-import Turn from "src/enums/Turn";
-import updateTurn from "src/updateGame/UpdateGameTurn";
-import updateGameStatus from "src/updateGame/UpdateGameState";
-import BoardUtils from "src/utils/BoardUtils";
-import SquareUtils from "src/utils/SquareUtils";
-import GameUtils from "src/utils/GameUtils";
-import updateGameHistory from "src/updateGame/UpdateGameHistory";
+import updateTurn from "src/UpdateGameUtils/UpdateGameTurn";
+import updateGameStatus from "src/UpdateGameUtils/UpdateGameState";
+import GameUtils from "src/ComponentUtils/GameUtils";
+import updateGameHistory from "src/UpdateGameUtils/UpdateGameHistory";
+import Game from "src/Components/Game";
+import BoardUtils from "src/ComponentUtils/BoardUtils";
+import SquareUtils from "src/ComponentUtils/SquareUtils";
+import Turn from "src/Enums/Turn";
+import { IGameState } from '../Components/Game';
 
 const { 
     findIndexOfMatchingBoard, 
@@ -59,14 +60,14 @@ const squareClickHandler = (game: Game, squareIndex: number): void => {
         gameStatusValues,
     };
 
-    game.setState(
-        {
+    game.setState((previousState: IGameState, props: {}) => {
+        return {
             history: updatedHistory,
             board,
             turn: updatedTurn,
             gameStatus: updatedGameStatus,
-        }
-    );
+        };
+    });
 };
 
 export default squareClickHandler;

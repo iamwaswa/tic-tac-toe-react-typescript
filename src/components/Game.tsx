@@ -1,15 +1,15 @@
-import { setupGame } from "src/updateGame/UpdateGameState";
+import { setupGame } from "src/UpdateGameUtils/UpdateGameState";
 import * as React from "react";
 import { Component } from "react";
-import Turn from "src/enums/Turn";
-import GameStatus from "src/enums/GameStatus";
-import IHistory from "src/interfaces/IHistory";
+import Turn from "src/Enums/Turn";
+import GameStatus from "src/Enums/GameStatus";
+import IHistory from "src/Interfaces/IHistory";
 import Display from "./Display";
 import squareClickHandler from "src/ClickHandlers/SquareClickHandler";
 import historyBtnClickHandler from '../ClickHandlers/HistoryBtnClickHandler';
 import restartBtnClickHandler from "src/ClickHandlers/RestartBtnClickHandler";
 import renderHistoryBtnList from "src/Renderers/HistoryBtnListRenderer";
-import renderSquares from "src/Renderers/SquareRenderer";
+import renderSquares from "src/Renderers/SquareListRenderer";
 
 export interface IGameState {
     history: IHistory;
@@ -50,7 +50,6 @@ class Game extends Component<{}, IGameState>{
     }
 
     public render (): JSX.Element {
-
         return (
             <Display 
                 message = { this.state. gameStatus }

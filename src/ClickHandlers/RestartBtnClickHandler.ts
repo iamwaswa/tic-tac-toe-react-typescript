@@ -1,10 +1,8 @@
-import Game from "src/components/Game";
-import { setupGame } from "src/updateGame/UpdateGameState";
+import Game from "src/Components/Game";
+import { setupGame } from "src/UpdateGameUtils/UpdateGameState";
 
 const restartBtnClickHandler = (game: Game): void => {
-    game.setState(
-        setupGame()
-    );
+    game.setState(setupGame);
 };
 
 export default restartBtnClickHandler;

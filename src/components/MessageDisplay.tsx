@@ -9,7 +9,7 @@ interface IMessageDisplay {
 const MessageDisplay: FunctionComponent<IMessageDisplay> = (
     (props: IMessageDisplay): JSX.Element => {
         return (  
-            <p style={ styles.gameStatus }>
+            <p style = { styles.gameStatus }>
                 { props.message }
             </p>
         );

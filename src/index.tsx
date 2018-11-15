@@ -1,5 +1,5 @@
 import * as React from "react";
-import Game from "./components/Game";
+import Game from "./Components/Game";
 import * as ReactDOM from "react-dom";
 
 ReactDOM.render(

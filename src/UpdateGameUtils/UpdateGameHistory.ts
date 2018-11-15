@@ -1,8 +1,8 @@
-import BoardUtils from "src/utils/BoardUtils";
-import IHistory from 'src/interfaces/IHistory';
-import GameStatus from 'src/enums/GameStatus';
-import Game from "src/components/Game";
-import Turn from "src/enums/Turn";
+import BoardUtils from "src/ComponentUtils/BoardUtils";
+import IHistory from 'src/Interfaces/IHistory';
+import GameStatus from 'src/Enums/GameStatus';
+import Game from "src/Components/Game";
+import Turn from "src/Enums/Turn";
 
 const { areBoardsSame } = BoardUtils;
 

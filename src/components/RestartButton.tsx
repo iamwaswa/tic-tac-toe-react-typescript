@@ -6,15 +6,17 @@ interface IRestartButtonProps {
     onClick: () => void;
 }
 
-const IRestartButton: FunctionComponent<IRestartButtonProps> = 
+const IRestartButton: FunctionComponent<IRestartButtonProps> = ( 
     (props: IRestartButtonProps): JSX.Element => {
         return (  
             <button
                 style = { styles.restartButton }
-                onClick = { props.onClick }>
-                    Restart
+                onClick = { props.onClick }
+            >
+                Restart
             </button>
         );
-};
+    }
+);
 
 export default IRestartButton;

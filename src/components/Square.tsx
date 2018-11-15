@@ -15,7 +15,7 @@ const Square: FunctionComponent<ISquareProps> = (
                 style = { styles.square } 
                 onClick = { props.onClick }
             >
-                {props.value}
+                { props.value }
             </section>
         );
     }

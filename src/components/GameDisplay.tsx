@@ -13,13 +13,14 @@ interface IGameDisplayProps {
 const GameDisplay: FunctionComponent<IGameDisplayProps> = (
     (props: IGameDisplayProps): JSX.Element => {
         return (  
-            <section style={ styles.game }>
+            <section style = { styles.game }>
                 <Board
-                    renderSquares={ props.renderSquares }
+                    renderSquares = { props.renderSquares }
                 />
                 <ButtonList
-                    onRestartClick={ props.onRestartClick }
-                    renderHistoryButtons={ props.renderHistoryButtons } />
+                    onRestartClick = { props.onRestartClick }
+                    renderHistoryButtons = { props.renderHistoryButtons } 
+                />
             </section>
         );
     }

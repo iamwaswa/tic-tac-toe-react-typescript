@@ -1,5 +1,5 @@
-import Game from "src/components/Game";
-import Square from "src/components/Square";
+import Game from "src/Components/Game";
+import Square from "src/Components/Square";
 import * as React from "react";
 
 const renderSquares = (game: Game): JSX.Element[] => {
@@ -18,7 +18,8 @@ const renderSquares = (game: Game): JSX.Element[] => {
                     onClick = { handleSquareOnClick }
                 />
             );
-        });
+        }
+    );
 };
 
 export default renderSquares;

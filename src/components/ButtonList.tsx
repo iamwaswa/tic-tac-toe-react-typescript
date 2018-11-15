@@ -12,12 +12,12 @@ interface IButtonListProps {
 const ButtonList: FunctionComponent<IButtonListProps> = (
     (props: IButtonListProps): JSX.Element => {
         return (  
-            <section style={ styles.buttons }>
+            <section style = { styles.buttons }>
                 <RestartButton
-                    onClick={ props.onRestartClick }
+                    onClick = { props.onRestartClick }
                 />
                 <HistoryButtonList
-                    renderHistoryButtons={ props.renderHistoryButtons }
+                    renderHistoryButtons = { props.renderHistoryButtons }
                 />
             </section>
         );

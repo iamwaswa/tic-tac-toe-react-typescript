@@ -1,10 +1,10 @@
-import GameStatus from "src/enums/GameStatus";
+import GameStatus from "src/Enums/GameStatus";
 
 const gameIsWonOrTied = (
     (gameStatus: GameStatus): boolean => {
         return gameStatus === GameStatus.X_WINS ||
             gameStatus === GameStatus.O_WINS ||
-            gameStatus === GameStatus.GAME_OVER;
+            gameStatus === GameStatus.TIE;
     }
 );
 

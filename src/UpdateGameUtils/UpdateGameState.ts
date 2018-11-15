@@ -1,6 +1,6 @@
-import { IGameState } from "src/components/Game";
-import Turn from "src/enums/Turn";
-import GameStatus from "src/enums/GameStatus";
+import { IGameState } from "src/Components/Game";
+import Turn from "src/Enums/Turn";
+import GameStatus from "src/Enums/GameStatus";
 
 const possibleWinningStates = [
     // Rows
@@ -42,15 +42,14 @@ export const setupGame = (): IGameState => {
 
 const updateGameStatus = (currentGameStatus: GameStatus, board: string[]): GameStatus => {
 
-    let isGameOver = true;
-    for (const square of board) {
-        if (square === ``) {
-            isGameOver = false;
-        }
-    }
+    const isGameTied = board
+                        .filter((square: string) => {
+                            return square === ``;
+                        })
+                        .length === 0;
 
-    if (isGameOver) {
-        return GameStatus.GAME_OVER;
+    if (isGameTied) {
+        return GameStatus.TIE;
     }
 
     for (const winningState of possibleWinningStates) {

@@ -15,7 +15,7 @@ const Display: FunctionComponent<IDisplayProps> = (
         return (  
             <section>
                 <MessageDisplay
-                    message={ props.message }
+                    message = { props.message }
                 />
                 <GameDisplay
                     renderSquares = { props.renderSquares }

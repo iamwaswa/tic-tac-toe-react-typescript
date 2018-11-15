@@ -1,6 +1,6 @@
-import Game from "src/components/Game";
-import Turn from "src/enums/Turn";
-import GameStatus from "src/enums/GameStatus";
+import Game, { IGameState } from "src/Components/Game";
+import Turn from "src/Enums/Turn";
+import GameStatus from "src/Enums/GameStatus";
 
 const historyBtnClickHandler = (game: Game, index: number): void => {
     const { historyBoards, turns, gameStatusValues } = game.state.history;
@@ -16,14 +16,17 @@ const historyBtnClickHandler = (game: Game, index: number): void => {
         gameStatusValues: updatedGameStatusvalues,
     };
 
-    game.setState(
-        {
+    game.setState((previousState: IGameState, props: {}) => {
+        return {
             history: updatedHistory,
-            board: updatedBoard === undefined ? Array(9).fill(``) : updatedBoard,
-            turn: updatedTurn === undefined ? Turn.X : updatedTurn,
-            gameStatus: updatedGameStatus === undefined ? GameStatus.CURRENT_PLAYER_X : updatedGameStatus,
-        }
-    );
+            board: updatedBoard === undefined ? 
+                    Array(9).fill(``) : updatedBoard,
+            turn: updatedTurn === undefined ? 
+                    Turn.X : updatedTurn,
+            gameStatus: updatedGameStatus === undefined ? 
+                            GameStatus.CURRENT_PLAYER_X : updatedGameStatus,
+        };
+    });
 };
 
 export default historyBtnClickHandler;
