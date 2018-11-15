@@ -8,8 +8,8 @@ const { areBoardsSame } = BoardUtils;
 
 const updateGameHistory = (
     (historyBoardIndex: number, history: IHistory, 
-        game: Game, currentBoard: string[],
-        updatedTurn: Turn, updatedGameStatus: GameStatus): void => {
+     game: Game, currentBoard: string[],
+     updatedTurn: Turn, updatedGameStatus: GameStatus): void => {
 
         const { turns, gameStatusValues } = history;
         const historyBoards = history.historyBoards.slice();

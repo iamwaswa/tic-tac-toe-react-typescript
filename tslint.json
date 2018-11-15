@@ -97,6 +97,17 @@
       true, 
       "always-prefix"
     ],
-    "semicolon": [true, "always"]
+    "semicolon": [
+      true, 
+      "always"
+    ],
+    "align": [
+      true, 
+      "parameters",
+      "arguments",
+      "statements",
+      "members",
+      "elements"
+    ]
   }
 }
