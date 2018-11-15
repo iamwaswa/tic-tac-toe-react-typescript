@@ -32,9 +32,9 @@ const updateGameHistory = (
 
 const updateGameAndKeepHistory = (
     (game: Game, historyBoards: string[][], 
-        turns: Turn[], gameStatusValues: GameStatus[],
-        currentBoard: string[], updatedTurn: Turn,
-        updatedGameStatus: GameStatus): void => {
+     turns: Turn[], gameStatusValues: GameStatus[],
+     currentBoard: string[], updatedTurn: Turn,
+     updatedGameStatus: GameStatus): void => {
 
         game.setState(
             {
@@ -53,9 +53,9 @@ const updateGameAndKeepHistory = (
 
 const updateGameAndHistory = (
     (game: Game, historyBoards: string[][],
-        turns: Turn[], gameStatusValues: GameStatus[],
-        currentBoard: string[], updatedTurn: Turn,
-        updatedGameStatus: GameStatus, historyBoardIndex: number): void => {
+     turns: Turn[], gameStatusValues: GameStatus[],
+     currentBoard: string[], updatedTurn: Turn,
+     updatedGameStatus: GameStatus, historyBoardIndex: number): void => {
 
         const updatedHistoryBoards = historyBoards.slice(0, historyBoardIndex + 1);
         const updatedTurns = turns.slice(0, historyBoardIndex + 1);
