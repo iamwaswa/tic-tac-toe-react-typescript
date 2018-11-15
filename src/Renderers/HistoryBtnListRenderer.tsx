@@ -6,19 +6,19 @@ const renderHistoryBtnList = (game: Game): JSX.Element[] => {
     const { historyBoards } = game.state.history;
 
     return historyBoards.map(
-        (historyBoard: string[], index: number) => {
-            const handleHistoryButtonOnClick = (): void => {
-                game.handleHistoryButtonOnClick(index);
-            };
+      (historyBoard: string[], index: number) => {
+        const handleHistoryButtonOnClick = (): void => {
+          game.handleHistoryButtonOnClick(index);
+        };
 
-            return (
-                <HistoryButton
-                    key = { index }
-                    position = { index }
-                    onClick = { handleHistoryButtonOnClick }
-                />
-            );
-        }
+        return (
+          <HistoryButton
+            key = { index }
+            position = { index }
+            onClick = { handleHistoryButtonOnClick }
+          />
+        );
+      }
     );
 };
 

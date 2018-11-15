@@ -3,17 +3,17 @@ import { FunctionComponent } from 'react';
 import styles from "src/styles";
 
 interface IMessageDisplay {
-    message: string;
+  message: string;
 }
 
 const MessageDisplay: FunctionComponent<IMessageDisplay> = (
-    (props: IMessageDisplay): JSX.Element => {
-        return (  
-            <p style = { styles.gameStatus }>
-                { props.message }
-            </p>
-        );
-    }
+  (props: IMessageDisplay): JSX.Element => {
+    return (  
+      <p style = { styles.gameStatus }>
+        { props.message }
+      </p>
+    );
+  }
 );
 
 export default MessageDisplay;

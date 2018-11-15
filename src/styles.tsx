@@ -8,41 +8,41 @@ document.body.style.minWidth = `150px`;
 // tslint:disable-next-line:typedef
 const styles = {
     game: {
-        display: `flex`,
-        alignItems: `flex-start`,
+      display: `flex`,
+      alignItems: `flex-start`,
     },
     gameStatus: {
-        margin: `0px 0px 10px 0px`,
+      margin: `0px 0px 10px 0px`,
     },
     board: {
-        width: `95px`,
-        display: `grid`,
-        gridTemplateRows: `repeat(3, auto)`,
-        gridTemplateColumns: `repeat(3, auto)`,
+      width: `95px`,
+      display: `grid`,
+      gridTemplateRows: `repeat(3, auto)`,
+      gridTemplateColumns: `repeat(3, auto)`,
     },
     square: {
-        display: `flex`,
-        justifyContent: `center`,
-        alignItems: `center`,
-        border: `1px solid black`,
-        width: `30px`,
-        height: `30px`,
+      display: `flex`,
+      justifyContent: `center`,
+      alignItems: `center`,
+      border: `1px solid black`,
+      width: `30px`,
+      height: `30px`,
     },
     buttons: {
-        display: `flex`,
-        flexDirection: `column` as `column`,
-        marginLeft: `1em`,
+      display: `flex`,
+      flexDirection: `column` as `column`,
+      marginLeft: `1em`,
     },
     restartButton: {
-        maxWidth: `55px`,
-        marginBottom: `1em`,
+      maxWidth: `55px`,
+      marginBottom: `1em`,
     },
     historyButtonList: {
-        display: `flex`,
-        flexDirection: `column` as `column`,
+      display: `flex`,
+      flexDirection: `column` as `column`,
     },
     historyButton: {
-        marginBottom: `1em`,
+      marginBottom: `1em`,
     },
 };
 

@@ -92,7 +92,6 @@
         "variable-declaration": "onespace"
       }
     ],
-    "newline-before-return": true,
     "interface-name": [
       true, 
       "always-prefix"

@@ -9,65 +9,65 @@ import Turn from "src/Enums/Turn";
 import { IGameState } from '../Components/Game';
 
 const { 
-    findIndexOfMatchingBoard, 
-    wasMatchingBoardFound, 
-    nextHistoryBoardExists,
+  findIndexOfMatchingBoard, 
+  wasMatchingBoardFound, 
+  nextHistoryBoardExists,
 } = BoardUtils;
 const { squareAlreadyFilled } = SquareUtils;
 const { gameIsWonOrTied } = GameUtils;
 
 const squareClickHandler = (game: Game, squareIndex: number): void => {
-    const board = game.state.board.slice();
-    const historyBoards = game.state.history.historyBoards.slice();
-    const turns = game.state.history.turns.slice();
-    const gameStatusValues = game.state.history.gameStatusValues.slice();
-    const { turn, gameStatus, history } = game.state;
+  const board = game.state.board.slice();
+  const historyBoards = game.state.history.historyBoards.slice();
+  const turns = game.state.history.turns.slice();
+  const gameStatusValues = game.state.history.gameStatusValues.slice();
+  const { turn, gameStatus, history } = game.state;
 
-    if (gameIsWonOrTied(gameStatus) ||
-        squareAlreadyFilled(board, squareIndex)) {
-        return;
-    }
+  if (gameIsWonOrTied(gameStatus) ||
+    squareAlreadyFilled(board, squareIndex)) {
+    return;
+  }
 
-    const historyBoardIndex = findIndexOfMatchingBoard(historyBoards, board);
-    
-    if (turn === Turn.X) {
-        board[squareIndex] = `X`;
-    } else {
-        board[squareIndex] = `O`;
-    }
+  const historyBoardIndex = findIndexOfMatchingBoard(historyBoards, board);
+  
+  if (turn === Turn.X) {
+    board[squareIndex] = `X`;
+  } else {
+    board[squareIndex] = `O`;
+  }
 
-    const updatedTurn = updateTurn(turn);
-    const updatedGameStatus = updateGameStatus(gameStatus, board);
+  const updatedTurn = updateTurn(turn);
+  const updatedGameStatus = updateGameStatus(gameStatus, board);
 
-    if (wasMatchingBoardFound(historyBoardIndex) &&
-        nextHistoryBoardExists(historyBoardIndex, historyBoards.length)) {
+  if (wasMatchingBoardFound(historyBoardIndex) &&
+      nextHistoryBoardExists(historyBoardIndex, historyBoards.length)) {
 
-        updateGameHistory(
-            historyBoardIndex, history, game,
-            board, updatedTurn, updatedGameStatus
-        );
+    updateGameHistory(
+        historyBoardIndex, history, game,
+        board, updatedTurn, updatedGameStatus
+    );
 
-        return;
-    }
+    return;
+  }
 
-    historyBoards.push(board);
-    turns.push(updatedTurn);
-    gameStatusValues.push(updatedGameStatus);
+  historyBoards.push(board);
+  turns.push(updatedTurn);
+  gameStatusValues.push(updatedGameStatus);
 
-    const updatedHistory = {
-        historyBoards,
-        turns,
-        gameStatusValues,
+  const updatedHistory = {
+    historyBoards,
+    turns,
+    gameStatusValues,
+  };
+
+  game.setState((previousState: IGameState, props: {}) => {
+    return {
+      history: updatedHistory,
+      board,
+      turn: updatedTurn,
+      gameStatus: updatedGameStatus,
     };
-
-    game.setState((previousState: IGameState, props: {}) => {
-        return {
-            history: updatedHistory,
-            board,
-            turn: updatedTurn,
-            gameStatus: updatedGameStatus,
-        };
-    });
+  });
 };
 
 export default squareClickHandler;

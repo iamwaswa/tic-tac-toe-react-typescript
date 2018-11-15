@@ -10,23 +10,23 @@ const updateGameHistory = (
     (historyBoardIndex: number, history: IHistory, 
      game: Game, currentBoard: string[],
      updatedTurn: Turn, updatedGameStatus: GameStatus): void => {
+        
+      const { turns, gameStatusValues } = history;
+      const historyBoards = history.historyBoards.slice();
+      const expectedNextBoardFromHistory = historyBoards[historyBoardIndex + 1];
 
-        const { turns, gameStatusValues } = history;
-        const historyBoards = history.historyBoards.slice();
-        const expectedNextBoardFromHistory = historyBoards[historyBoardIndex + 1];
-
-        if (areBoardsSame(currentBoard, expectedNextBoardFromHistory)) {
-            updateGameAndKeepHistory(
-                game, historyBoards, turns, gameStatusValues,
-                currentBoard, updatedTurn, updatedGameStatus
-            );
-        } else {
-            updateGameAndHistory(
-                game, historyBoards, turns, gameStatusValues,
-                currentBoard, updatedTurn, updatedGameStatus, 
-                historyBoardIndex
-            );
-        } 
+      if (areBoardsSame(currentBoard, expectedNextBoardFromHistory)) {
+          updateGameAndKeepHistory(
+              game, historyBoards, turns, gameStatusValues,
+              currentBoard, updatedTurn, updatedGameStatus
+          );
+      } else {
+          updateGameAndHistory(
+              game, historyBoards, turns, gameStatusValues,
+              currentBoard, updatedTurn, updatedGameStatus, 
+              historyBoardIndex
+          );
+      } 
     }
 );
 
