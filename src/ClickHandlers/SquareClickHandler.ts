@@ -24,7 +24,7 @@ const squareClickHandler = (game: Game, squareIndex: number): void => {
   const { turn, gameStatus, history } = game.state;
 
   if (gameIsWonOrTied(gameStatus) ||
-    squareAlreadyFilled(board, squareIndex)) {
+      squareAlreadyFilled(board, squareIndex)) {
     return;
   }
 
