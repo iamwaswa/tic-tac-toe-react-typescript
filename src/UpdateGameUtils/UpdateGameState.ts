@@ -1,4 +1,4 @@
-import { IGameState } from "src/Components/Game";
+import Game, { IGameState } from "src/Components/Game";
 import Turn from "src/Enums/Turn";
 import GameStatus from "src/Enums/GameStatus";
 
@@ -23,25 +23,29 @@ const startGameStatus = GameStatus.CURRENT_PLAYER_X;
 const historyBoards: string[][] = [];
 const turns: Turn[] = [];
 const gameStatusValues: GameStatus[] = [];
+const nextMoves: number[] = [];
+const startingWinningPositions: number[] = [];
 
 const startHistory = {
   historyBoards,
   turns,
   gameStatusValues,
+  nextMoves,
+  startingWinningPositions,
 };
 
 export const setupGame = (): IGameState => {
-
   return {
     history: startHistory,
     board: startBoard,
     turn: startTurn,
     gameStatus: startGameStatus,
+    winningPositions: startingWinningPositions,
   };
 };
 
-const updateGameStatus = (currentGameStatus: GameStatus, board: string[]): GameStatus => {
-
+const updateGameStatus = (
+  (game: Game, currentGameStatus: GameStatus, board: string[]): GameStatus => {
     const isGameTied = board
                         .filter((square: string) => {
                           return square === ``;
@@ -49,6 +53,11 @@ const updateGameStatus = (currentGameStatus: GameStatus, board: string[]): GameS
                         .length === 0;
 
     if (isGameTied) {
+      game.setState((prevState: IGameState, props: {}) => {
+        return {
+          winningPositions: [],
+        };
+      });
       return GameStatus.TIE;
     }
 
@@ -56,7 +65,18 @@ const updateGameStatus = (currentGameStatus: GameStatus, board: string[]): GameS
       const [ firstIndex ] = winningState;
       const gameIsWon = allIndicesHaveSameValue(board, winningState);
       if (gameIsWon) {
+        game.setState((prevState: IGameState, props: {}) => {
+          return {
+            winningPositions: [...winningState],
+          };
+        });
         return determineWhichPlayerWon(board, firstIndex);
+      } else {
+        game.setState((prevState: IGameState, props: {}) => {
+          return {
+            winningPositions: [],
+          };
+        });
       }
     }
 
@@ -65,7 +85,8 @@ const updateGameStatus = (currentGameStatus: GameStatus, board: string[]): GameS
     } else {
       return GameStatus.CURRENT_PLAYER_X;
     }
-};
+  }
+);
 
 const allIndicesHaveSameValue = (board: string[], winningState: number[]): boolean => {
     const [firstIndex, secondIndex, thirdIndex] = winningState;

@@ -5,6 +5,7 @@ interface IHistory {
   historyBoards: string[][];
   turns: Turn[];
   gameStatusValues: GameStatus[];
+  nextMoves: number[];
 }
 
 export default IHistory;

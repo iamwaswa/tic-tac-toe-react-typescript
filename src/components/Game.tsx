@@ -16,6 +16,7 @@ export interface IGameState {
   board: string[];
   turn: Turn;
   gameStatus: GameStatus;
+  winningPositions: number[];
 }
 
 class Game extends Component<{}, IGameState>{
@@ -45,8 +46,8 @@ class Game extends Component<{}, IGameState>{
     squareClickHandler(this, squareIndex);
   }
 
-  public handleHistoryButtonOnClick = (index: number): void => {
-    historyBtnClickHandler(this, index);
+  public handleHistoryButtonOnClick = (index: number): boolean => {
+    return historyBtnClickHandler(this, index);
   }
 
   public render (): JSX.Element {

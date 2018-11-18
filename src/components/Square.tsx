@@ -1,20 +1,20 @@
-import { FunctionComponent } from 'react';
-import styles from "src/styles";
+import { FunctionComponent, CSSProperties } from 'react';
 import * as React from "react";
 
 interface ISquareProps {
   value: string;
+  style: () => CSSProperties;
   onClick: () => void;
 }
 
 const Square: FunctionComponent<ISquareProps> = (
-  (props: ISquareProps): JSX.Element => {    
+  ({ value, style, onClick }: ISquareProps): JSX.Element => {    
     return ( 
       <section 
-        style = { styles.square } 
-        onClick = { props.onClick }
+        style = { style() } 
+        onClick = { onClick }
       >
-        { props.value }
+        { value }
       </section>
     );
   }

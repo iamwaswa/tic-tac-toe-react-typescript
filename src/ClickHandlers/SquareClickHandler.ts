@@ -21,6 +21,7 @@ const squareClickHandler = (game: Game, squareIndex: number): void => {
   const historyBoards = game.state.history.historyBoards.slice();
   const turns = game.state.history.turns.slice();
   const gameStatusValues = game.state.history.gameStatusValues.slice();
+  const nextMoves = game.state.history.nextMoves.slice();
   const { turn, gameStatus, history } = game.state;
 
   if (gameIsWonOrTied(gameStatus) ||
@@ -37,14 +38,15 @@ const squareClickHandler = (game: Game, squareIndex: number): void => {
   }
 
   const updatedTurn = updateTurn(turn);
-  const updatedGameStatus = updateGameStatus(gameStatus, board);
+  const updatedGameStatus = updateGameStatus(game, gameStatus, board);
 
   if (wasMatchingBoardFound(historyBoardIndex) &&
       nextHistoryBoardExists(historyBoardIndex, historyBoards.length)) {
 
     updateGameHistory(
         historyBoardIndex, history, game,
-        board, updatedTurn, updatedGameStatus
+        board, updatedTurn, updatedGameStatus,
+        squareIndex
     );
 
     return;
@@ -53,11 +55,13 @@ const squareClickHandler = (game: Game, squareIndex: number): void => {
   historyBoards.push(board);
   turns.push(updatedTurn);
   gameStatusValues.push(updatedGameStatus);
+  nextMoves.push(squareIndex);
 
   const updatedHistory = {
     historyBoards,
     turns,
     gameStatusValues,
+    nextMoves,
   };
 
   game.setState((previousState: IGameState, props: {}) => {

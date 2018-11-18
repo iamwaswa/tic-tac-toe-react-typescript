@@ -28,6 +28,14 @@ const styles = {
       width: `30px`,
       height: `30px`,
     },
+    normalSquare: {
+      backgroundColor: `white`,
+      color: `black`,
+    },
+    winSquare: {
+      backgroundColor: `black`,
+      color: `white`,
+    },
     buttons: {
       display: `flex`,
       flexDirection: `column` as `column`,
@@ -41,8 +49,12 @@ const styles = {
       display: `flex`,
       flexDirection: `column` as `column`,
     },
-    historyButton: {
+    historySection: {
       marginBottom: `1em`,
+    },
+    historySectionParagraph: {
+      margin: `0`,
+      fontWeight: `lighter` as `lighter`,
     },
 };
 

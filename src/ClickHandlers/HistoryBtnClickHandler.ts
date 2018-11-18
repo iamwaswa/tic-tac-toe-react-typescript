@@ -2,11 +2,19 @@ import Game, { IGameState } from "src/Components/Game";
 import Turn from "src/Enums/Turn";
 import GameStatus from "src/Enums/GameStatus";
 
-const historyBtnClickHandler = (game: Game, index: number): void => {
-  const { historyBoards, turns, gameStatusValues } = game.state.history;
+const historyBtnClickHandler = 
+(game: Game, 
+ index: number): boolean => {
+  const { 
+    historyBoards, 
+    turns, 
+    gameStatusValues, 
+    nextMoves,
+  } = game.state.history;
   const updatedHistoryBoards = historyBoards.slice();
   const updatedTurns = turns.slice();
   const updatedGameStatusvalues = gameStatusValues.slice();
+  const updatedNextMoves = nextMoves.slice();
   const updatedBoard = updatedHistoryBoards[index];
   const updatedTurn = updatedTurns[index];
   const updatedGameStatus = updatedGameStatusvalues[index];
@@ -14,6 +22,7 @@ const historyBtnClickHandler = (game: Game, index: number): void => {
     historyBoards: updatedHistoryBoards,
     turns: updatedTurns,
     gameStatusValues: updatedGameStatusvalues,
+    nextMoves: updatedNextMoves,
   };
 
   game.setState((previousState: IGameState, props: {}) => {
@@ -27,6 +36,8 @@ const historyBtnClickHandler = (game: Game, index: number): void => {
                   GameStatus.CURRENT_PLAYER_X : updatedGameStatus,
     };
   });
+
+  return true;
 };
 
 export default historyBtnClickHandler;

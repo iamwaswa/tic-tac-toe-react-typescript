@@ -1,21 +1,29 @@
 import * as React from 'react';
 import { FunctionComponent } from 'react';
 import styles from "src/styles";
+import Coordinate from "src/Types/Coordinate";
 
 interface IHistoryButtonProps {
   position: number;
+  coordinate: Coordinate;
   onClick: () => void;
 }
 
 const HistoryButton: FunctionComponent<IHistoryButtonProps> = (
-  (props: IHistoryButtonProps): JSX.Element => {
+  ({ position, coordinate, onClick }: IHistoryButtonProps): JSX.Element => {
     return ( 
-      <button 
-        onClick = { props.onClick }
-        style = { styles.historyButton }
+      <section 
+        style = { styles.historySection }
       >
-        { `Go back to move number ${props.position + 1}` }
-      </button>
+        <button 
+          onClick = { onClick }
+        >
+          { `Go back to move #${position + 1}` }
+        </button>
+        <p style = { styles.historySectionParagraph }>
+          { `Column: ${ coordinate.Column }, Row: ${ coordinate.Row }` }
+        </p>
+      </section>
     );
   }
 );
