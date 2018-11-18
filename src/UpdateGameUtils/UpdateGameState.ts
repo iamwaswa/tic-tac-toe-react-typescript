@@ -2,7 +2,7 @@ import Game, { IGameState } from "src/Components/Game";
 import Turn from "src/Enums/Turn";
 import GameStatus from "src/Enums/GameStatus";
 
-const possibleWinningStates = [
+export const possibleWinningStates = [
   // Rows
   [0, 1, 2],
   [3, 4, 5],
@@ -88,7 +88,7 @@ const updateGameStatus = (
   }
 );
 
-const allIndicesHaveSameValue = (board: string[], winningState: number[]): boolean => {
+export const allIndicesHaveSameValue = (board: string[], winningState: number[]): boolean => {
     const [firstIndex, secondIndex, thirdIndex] = winningState;
 
     if (board[firstIndex] === ``) {

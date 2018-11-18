@@ -1,3 +1,4 @@
+import { possibleWinningStates, allIndicesHaveSameValue } from './../UpdateGameUtils/UpdateGameState';
 import Game, { IGameState } from "src/Components/Game";
 import Turn from "src/Enums/Turn";
 import GameStatus from "src/Enums/GameStatus";
@@ -36,6 +37,18 @@ const historyBtnClickHandler =
                   GameStatus.CURRENT_PLAYER_X : updatedGameStatus,
     };
   });
+
+  for (const winningState of possibleWinningStates) {
+    const gameIsWon = allIndicesHaveSameValue(updatedBoard, winningState);
+    if (gameIsWon) {
+      game.setState((prevState: IGameState, props: {}) => {
+        return {
+          winningPositions: [...winningState],
+        };
+      });
+      break;
+    } 
+  }
 
   return true;
 };
