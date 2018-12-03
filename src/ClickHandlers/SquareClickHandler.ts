@@ -1,16 +1,15 @@
-import updateTurn from "src/UpdateGameUtils/UpdateGameTurn";
-import updateGameStatus from "src/UpdateGameUtils/UpdateGameState";
-import GameUtils from "src/ComponentUtils/GameUtils";
-import updateGameHistory from "src/UpdateGameUtils/UpdateGameHistory";
-import Game from "src/Components/Game";
-import BoardUtils from "src/ComponentUtils/BoardUtils";
-import SquareUtils from "src/ComponentUtils/SquareUtils";
-import Turn from "src/Enums/Turn";
-import { IGameState } from '../Components/Game';
+import GameUtils from 'src/ComponentUtils/GameUtils';
+import UpdateGameHistory from 'src/UpdateGameUtils/UpdateGameHistory';
+import Game from 'src/Components/Game';
+import BoardUtils from 'src/ComponentUtils/BoardUtils';
+import SquareUtils from 'src/ComponentUtils/SquareUtils';
+import Turn from 'src/Enums/Turn';
+import UpdateGameTurn from 'src/UpdateGameUtils/UpdateGameTurn';
+import UpdateGameState from 'src/UpdateGameUtils/UpdateGameState';
 
-const { 
-  findIndexOfMatchingBoard, 
-  wasMatchingBoardFound, 
+const {
+  findIndexOfMatchingBoard,
+  wasMatchingBoardFound,
   nextHistoryBoardExists,
 } = BoardUtils;
 const { squareAlreadyFilled } = SquareUtils;
@@ -30,20 +29,20 @@ const squareClickHandler = (game: Game, squareIndex: number): void => {
   }
 
   const historyBoardIndex = findIndexOfMatchingBoard(historyBoards, board);
-  
+
   if (turn === Turn.X) {
-    board[squareIndex] = `X`;
+    board[squareIndex] = 'X';
   } else {
-    board[squareIndex] = `O`;
+    board[squareIndex] = 'O';
   }
 
-  const updatedTurn = updateTurn(turn);
-  const updatedGameStatus = updateGameStatus(game, gameStatus, board);
+  const updatedTurn = UpdateGameTurn(turn);
+  const updatedGameStatus = UpdateGameState(game, gameStatus, board);
 
   if (wasMatchingBoardFound(historyBoardIndex) &&
       nextHistoryBoardExists(historyBoardIndex, historyBoards.length)) {
 
-    updateGameHistory(
+    UpdateGameHistory(
         historyBoardIndex, history, game,
         board, updatedTurn, updatedGameStatus,
         squareIndex
@@ -64,7 +63,7 @@ const squareClickHandler = (game: Game, squareIndex: number): void => {
     nextMoves,
   };
 
-  game.setState((previousState: IGameState, props: {}) => {
+  game.setState(() => {
     return {
       history: updatedHistory,
       board,

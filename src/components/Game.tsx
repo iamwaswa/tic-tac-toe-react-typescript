@@ -1,15 +1,14 @@
-import { setupGame } from "src/UpdateGameUtils/UpdateGameState";
-import * as React from "react";
-import { Component } from "react";
-import Turn from "src/Enums/Turn";
-import GameStatus from "src/Enums/GameStatus";
-import IHistory from "src/Interfaces/IHistory";
-import Display from "./Display";
-import squareClickHandler from "src/ClickHandlers/SquareClickHandler";
-import historyBtnClickHandler from '../ClickHandlers/HistoryBtnClickHandler';
-import restartBtnClickHandler from "src/ClickHandlers/RestartBtnClickHandler";
-import renderHistoryBtnList from "src/Renderers/HistoryBtnListRenderer";
-import renderSquares from "src/Renderers/SquareListRenderer";
+import { setupGame } from 'src/UpdateGameUtils/UpdateGameState';
+import * as React from 'react';
+import Turn from 'src/Enums/Turn';
+import GameStatus from 'src/Enums/GameStatus';
+import IHistory from 'src/Interfaces/IHistory';
+import Display from './Display';
+import SquareClickHandler from 'src/ClickHandlers/SquareClickHandler';
+import HistoryBtnClickHandler from '../ClickHandlers/HistoryBtnClickHandler';
+import RestartBtnClickHandler from 'src/ClickHandlers/RestartBtnClickHandler';
+import HistoryBtnListRenderer from 'src/Renderers/HistoryBtnListRenderer';
+import SquareListRenderer from 'src/Renderers/SquareListRenderer';
 
 export interface IGameState {
   history: IHistory;
@@ -19,8 +18,8 @@ export interface IGameState {
   winningPositions: number[];
 }
 
-class Game extends Component<{}, IGameState>{
-    
+class Game extends React.Component<{}, IGameState>{
+
   constructor (props: {}) {
     super(props);
     this.state = setupGame();
@@ -31,28 +30,28 @@ class Game extends Component<{}, IGameState>{
   }
 
   private renderHistoryButtons = (): JSX.Element[] => {
-    return renderHistoryBtnList(this);
+    return HistoryBtnListRenderer(this);
   }
 
   private renderSquares = (): JSX.Element[] => {
-    return renderSquares(this);
+    return SquareListRenderer(this);
   }
 
   private handleRestartOnClick = (): void => {
-    restartBtnClickHandler(this);
+    RestartBtnClickHandler(this);
   }
 
   public handleSquareOnClick = (squareIndex: number): void => {
-    squareClickHandler(this, squareIndex);
+    SquareClickHandler(this, squareIndex);
   }
 
   public handleHistoryButtonOnClick = (index: number): boolean => {
-    return historyBtnClickHandler(this, index);
+    return HistoryBtnClickHandler(this, index);
   }
 
   public render (): JSX.Element {
     return (
-      <Display 
+      <Display
         message = { this.state. gameStatus }
         renderSquares = { this.renderSquares }
         onRestartClick = { this.handleRestartOnClick }

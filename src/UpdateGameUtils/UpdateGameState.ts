@@ -1,6 +1,6 @@
-import Game, { IGameState } from "src/Components/Game";
-import Turn from "src/Enums/Turn";
-import GameStatus from "src/Enums/GameStatus";
+import Game, { IGameState } from 'src/Components/Game';
+import Turn from 'src/Enums/Turn';
+import GameStatus from 'src/Enums/GameStatus';
 
 export const possibleWinningStates = [
   // Rows
@@ -16,7 +16,7 @@ export const possibleWinningStates = [
   [2, 4, 6],
 ];
 
-const startBoard = Array(9).fill(``);
+const startBoard = Array(9).fill('');
 const startTurn = Turn.X;
 const startGameStatus = GameStatus.CURRENT_PLAYER_X;
 
@@ -46,11 +46,12 @@ export const setupGame = (): IGameState => {
 
 const updateGameStatus = (
   (game: Game, currentGameStatus: GameStatus, board: string[]): GameStatus => {
-    const isGameTied = board
-                        .filter((square: string) => {
-                          return square === ``;
-                        })
-                        .length === 0;
+    const isGameTied =
+      board
+        .filter((square: string) => {
+          return square === '';
+        })
+        .length === 0;
 
     if (isGameTied) {
       game.setState((prevState: IGameState, props: {}) => {
@@ -62,7 +63,7 @@ const updateGameStatus = (
     }
 
     for (const winningState of possibleWinningStates) {
-      const [ firstIndex ] = winningState;
+      const [firstIndex] = winningState;
       const gameIsWon = allIndicesHaveSameValue(board, winningState);
       if (gameIsWon) {
         game.setState((prevState: IGameState, props: {}) => {
@@ -88,23 +89,25 @@ const updateGameStatus = (
   }
 );
 
-export const allIndicesHaveSameValue = (board: string[], winningState: number[]): boolean => {
-    const [firstIndex, secondIndex, thirdIndex] = winningState;
+export const allIndicesHaveSameValue =
+(board: string[], winningState: number[]): boolean => {
+  const [firstIndex, secondIndex, thirdIndex] = winningState;
 
-    if (board[firstIndex] === ``) {
-      return false;
-    }
+  if (board[firstIndex] === '') {
+    return false;
+  }
 
-    return board[firstIndex] === board[secondIndex] &&
+  return board[firstIndex] === board[secondIndex] &&
            board[secondIndex] === board[thirdIndex];
 };
 
-const determineWhichPlayerWon = (board: string[], firstIndex: number): GameStatus => {
-    if (board[firstIndex] === Turn.X) {
-      return GameStatus.X_WINS;
-    } else {   
-      return GameStatus.O_WINS;
-    }
+const determineWhichPlayerWon =
+(board: string[], firstIndex: number): GameStatus => {
+  if (board[firstIndex] === Turn.X) {
+    return GameStatus.X_WINS;
+  } else {
+    return GameStatus.O_WINS;
+  }
 };
 
 export default updateGameStatus;

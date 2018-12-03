@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { FunctionComponent } from 'react';
-import MessageDisplay from "./MessageDisplay";
-import GameDisplay from "./GameDisplay";
+import MessageDisplay from './MessageDisplay';
+import GameDisplay from './GameDisplay';
 
 interface IDisplayProps {
   message: string;
@@ -10,9 +9,9 @@ interface IDisplayProps {
   renderHistoryButtons: () => JSX.Element[];
 }
 
-const Display: FunctionComponent<IDisplayProps> = (
+const display: React.FunctionComponent<IDisplayProps> = (
   (props: IDisplayProps): JSX.Element => {
-    return (  
+    return (
       <section>
         <MessageDisplay
           message = { props.message }
@@ -27,4 +26,4 @@ const Display: FunctionComponent<IDisplayProps> = (
   }
 );
 
-export default Display;
+export default display;

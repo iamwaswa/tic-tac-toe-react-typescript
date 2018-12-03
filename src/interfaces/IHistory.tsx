@@ -1,5 +1,5 @@
-import Turn from "src/Enums/Turn";
-import GameStatus from "src/Enums/GameStatus";
+import Turn from 'src/Enums/Turn';
+import GameStatus from 'src/Enums/GameStatus';
 
 interface IHistory {
   historyBoards: string[][];

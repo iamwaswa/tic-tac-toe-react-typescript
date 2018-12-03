@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "extends": ["tslint-config-airbnb"],
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
@@ -8,6 +8,10 @@
     ]
   },
   "rules": {
+    "no-else-after-return": false,
+    "no-increment-decrement": false,
+    "object-shorthand-properties-first": false,
+    "eofline": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "no-default-export": false,

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { FunctionComponent } from 'react';
-import styles from "src/styles";
-import Coordinate from "src/Types/Coordinate";
+import styles from 'src/styles';
+import Coordinate from 'src/Types/Coordinate';
 
 interface IHistoryButtonProps {
   position: number;
@@ -9,13 +8,13 @@ interface IHistoryButtonProps {
   onClick: () => void;
 }
 
-const HistoryButton: FunctionComponent<IHistoryButtonProps> = (
+const historyButton: React.FunctionComponent<IHistoryButtonProps> = (
   ({ position, coordinate, onClick }: IHistoryButtonProps): JSX.Element => {
-    return ( 
-      <section 
+    return (
+      <section
         style = { styles.historySection }
       >
-        <button 
+        <button
           onClick = { onClick }
         >
           { `Go back to move #${position + 1}` }
@@ -28,4 +27,4 @@ const HistoryButton: FunctionComponent<IHistoryButtonProps> = (
   }
 );
 
-export default HistoryButton;
+export default historyButton;

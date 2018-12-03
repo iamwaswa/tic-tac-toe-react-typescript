@@ -1,7 +1,7 @@
-import HistoryButton from "src/Components/HistoryButton";
-import * as React from "react";
-import Game from "src/Components/Game";
-import Coordinate from "src/Types/Coordinate";
+import HistoryButton from 'src/Components/HistoryButton';
+import * as React from 'react';
+import Game from 'src/Components/Game';
+import Coordinate from 'src/Types/Coordinate';
 
 const determineRow = (index: number): number => {
   if (index >= 0 && index <= 2) {
@@ -38,29 +38,29 @@ const getNewMoveCoordinate = (
 );
 
 const renderHistoryBtnList = (game: Game): JSX.Element[] => {
-    const { historyBoards, nextMoves } = game.state.history;
+  const { historyBoards, nextMoves } = game.state.history;
 
-    return historyBoards.map(
-      (historyBoard: string[], index: number) => {
-        const handleHistoryButtonOnClick = (
-          (): boolean => {
-            return game.handleHistoryButtonOnClick(index);
-          }
-        );
+  return historyBoards.map(
+    (historyBoard: string[], index: number) => {
+      const handleHistoryButtonOnClick = (
+        (): boolean => {
+          return game.handleHistoryButtonOnClick(index);
+        }
+      );
 
-        const newMoveCoordinate = 
-          getNewMoveCoordinate(nextMoves[index]);
+      const newMoveCoordinate =
+        getNewMoveCoordinate(nextMoves[index]);
 
-        return (
-          <HistoryButton
-            key = { index }
-            position = { index }
-            coordinate = { newMoveCoordinate }
-            onClick = { handleHistoryButtonOnClick }
-          />
-        );
-      }
-    );
+      return (
+        <HistoryButton
+          key = { index }
+          position = { index }
+          coordinate = { newMoveCoordinate }
+          onClick = { handleHistoryButtonOnClick }
+        />
+      );
+    }
+  );
 };
 
 export default renderHistoryBtnList;

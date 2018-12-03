@@ -1,4 +1,4 @@
-import GameStatus from "src/Enums/GameStatus";
+import GameStatus from 'src/Enums/GameStatus';
 
 const gameIsWonOrTied = (
   (gameStatus: GameStatus): boolean => {
@@ -8,8 +8,8 @@ const gameIsWonOrTied = (
   }
 );
 
-const GameUtils = {
+const gameUtils = {
   gameIsWonOrTied,
 };
 
-export default GameUtils;
+export default gameUtils;

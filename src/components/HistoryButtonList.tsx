@@ -1,15 +1,14 @@
-import { FunctionComponent } from 'react';
-import * as React from "react";
-import styles from "src/styles";
+import * as React from 'react';
+import styles from 'src/styles';
 
 interface IHistoryButtonListProps {
   renderHistoryButtons: () => JSX.Element[];
 }
 
-const HistoryButtonList: FunctionComponent<IHistoryButtonListProps> = (
+const historyButtonList: React.FunctionComponent<IHistoryButtonListProps> = (
   (props: IHistoryButtonListProps): JSX.Element => {
-    return (  
-      <section 
+    return (
+      <section
         style = { styles.historyButtonList }
       >
         { props.renderHistoryButtons() }
@@ -18,4 +17,4 @@ const HistoryButtonList: FunctionComponent<IHistoryButtonListProps> = (
   }
 );
 
-export default HistoryButtonList;
+export default historyButtonList;

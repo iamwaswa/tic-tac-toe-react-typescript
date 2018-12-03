@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { FunctionComponent } from 'react';
-import styles from "src/styles";
-import Board from "./Board";
-import ButtonList from "./ButtonList";
+import styles from 'src/styles';
+import Board from './Board';
+import ButtonList from './ButtonList';
 
 interface IGameDisplayProps {
   renderSquares: () => JSX.Element[];
@@ -10,20 +9,20 @@ interface IGameDisplayProps {
   renderHistoryButtons: () => JSX.Element[];
 }
 
-const GameDisplay: FunctionComponent<IGameDisplayProps> = (
+const gameDisplay: React.FunctionComponent<IGameDisplayProps> = (
   (props: IGameDisplayProps): JSX.Element => {
-    return (  
+    return (
       <section style = { styles.game }>
         <Board
           renderSquares = { props.renderSquares }
         />
         <ButtonList
           onRestartClick = { props.onRestartClick }
-          renderHistoryButtons = { props.renderHistoryButtons } 
+          renderHistoryButtons = { props.renderHistoryButtons }
         />
       </section>
     );
   }
 );
 
-export default GameDisplay;
+export default gameDisplay;

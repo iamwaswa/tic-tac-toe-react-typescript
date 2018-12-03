@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { FunctionComponent } from 'react';
-import styles from "src/styles";
+import styles from 'src/styles';
 
 interface IRestartButtonProps {
   onClick: () => void;
 }
 
-const IRestartButton: FunctionComponent<IRestartButtonProps> = ( 
+const restartButton: React.FunctionComponent<IRestartButtonProps> = (
   (props: IRestartButtonProps): JSX.Element => {
-    return (  
+    return (
       <button
         style = { styles.restartButton }
         onClick = { props.onClick }
@@ -19,4 +18,4 @@ const IRestartButton: FunctionComponent<IRestartButtonProps> = (
   }
 );
 
-export default IRestartButton;
+export default restartButton;

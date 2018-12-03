@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { FunctionComponent } from 'react';
-import styles from "src/styles";
+import styles from 'src/styles';
 
 interface IBoardProps {
   renderSquares: () => JSX.Element[];
 }
 
-const Board: FunctionComponent<IBoardProps> = (
+const board: React.FunctionComponent<IBoardProps> = (
   (props: IBoardProps): JSX.Element => {
-    return ( 
-      <section 
+    return (
+      <section
         style = { styles.board }
       >
         { props.renderSquares() }
@@ -18,4 +17,4 @@ const Board: FunctionComponent<IBoardProps> = (
   }
 );
 
-export default Board;
+export default board;

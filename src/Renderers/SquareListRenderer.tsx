@@ -1,8 +1,7 @@
-import Game from "src/Components/Game";
-import Square from "src/Components/Square";
-import * as React from "react";
-import { CSSProperties } from "react";
-import styles from "src/styles";
+import Game from 'src/Components/Game';
+import Square from 'src/Components/Square';
+import * as React from 'react';
+import styles from 'src/styles';
 
 const isWinningPosition = (
   (winningPositions: number[], index: number): boolean => {
@@ -28,7 +27,7 @@ const renderSquares = (game: Game): JSX.Element[] => {
         game.handleSquareOnClick(index);
       };
 
-      const setStyleForWinSquare = (): CSSProperties => {
+      const setStyleForWinSquare = (): React.CSSProperties => {
         if (isWinningPosition(winningPositions, index)) {
           return { ...styles.square, ...styles.winSquare };
         }

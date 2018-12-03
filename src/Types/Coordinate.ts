@@ -1,7 +1,7 @@
 export default class Coordinate {
   private row?: number;
   private column?: number;
-  
+
   constructor (...coordinate: number[] | undefined[]) {
     this.row = coordinate[0];
     this.column = coordinate[1];

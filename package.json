@@ -5,7 +5,9 @@
   "dependencies": {
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
-    "react-scripts-ts": "^4.0.8"
+    "react-scripts-ts": "^3.1.0",
+    "save-dev": "^2.0.0",
+    "tslint-config-airbnb": "^5.11.1"
   },
   "scripts": {
     "start": "react-scripts-ts start",

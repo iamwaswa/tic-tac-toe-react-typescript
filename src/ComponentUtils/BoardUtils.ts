@@ -37,11 +37,11 @@ const nextHistoryBoardExists = (
   }
 );
 
-const BoardUtils = {
+const boardUtils = {
   findIndexOfMatchingBoard,
   areBoardsSame,
   wasMatchingBoardFound,
   nextHistoryBoardExists,
 };
 
-export default BoardUtils;
+export default boardUtils;

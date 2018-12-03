@@ -1,11 +1,11 @@
 const squareAlreadyFilled = (
   (board: string[], index: number): boolean => {
-    return board[index] !== ``;
+    return board[index] !== '';
   }
 );
 
-const SquareUtils = {
+const squareUtils = {
   squareAlreadyFilled,
 };
 
-export default SquareUtils;
+export default squareUtils;

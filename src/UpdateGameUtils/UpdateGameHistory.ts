@@ -1,17 +1,17 @@
-import BoardUtils from "src/ComponentUtils/BoardUtils";
+import BoardUtils from 'src/ComponentUtils/BoardUtils';
 import IHistory from 'src/Interfaces/IHistory';
 import GameStatus from 'src/Enums/GameStatus';
-import Game from "src/Components/Game";
-import Turn from "src/Enums/Turn";
+import Game from 'src/Components/Game';
+import Turn from 'src/Enums/Turn';
 
 const { areBoardsSame } = BoardUtils;
 
 const updateGameHistory = (
-  (historyBoardIndex: number, history: IHistory, 
+  (historyBoardIndex: number, history: IHistory,
    game: Game, currentBoard: string[],
    updatedTurn: Turn, updatedGameStatus: GameStatus,
    nextMoveIndex: number): void => {
-      
+
     const { turns, gameStatusValues, nextMoves } = history;
     const historyBoards = history.historyBoards.slice();
     const expectedNextBoardFromHistory = historyBoards[historyBoardIndex + 1];
@@ -24,17 +24,17 @@ const updateGameHistory = (
     } else {
       updateGameAndHistory(
         game, historyBoards, turns, gameStatusValues, nextMoves,
-        currentBoard, updatedTurn, updatedGameStatus, 
+        currentBoard, updatedTurn, updatedGameStatus,
         historyBoardIndex, nextMoveIndex
       );
-    } 
+    }
   }
 );
 
 const updateGameAndKeepHistory = (
-  (game: Game, historyBoards: string[][], 
-   turns: Turn[], gameStatusValues: GameStatus[], 
-   nextMoves: number[], currentBoard: string[], 
+  (game: Game, historyBoards: string[][],
+   turns: Turn[], gameStatusValues: GameStatus[],
+   nextMoves: number[], currentBoard: string[],
    updatedTurn: Turn, updatedGameStatus: GameStatus): void => {
 
     game.setState(
